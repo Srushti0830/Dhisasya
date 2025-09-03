@@ -2,46 +2,49 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dhisasya Dashboard</title>
+  <title>Dhisasya - Intelligent Crop System</title>
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+
   <!-- Header -->
   <header>
-    <img src="logo.png" alt="Dhisasya Logo" class="logo">
-    <h1>Farmer Dashboard</h1>
+    <img src="images/logo.jpeg" alt="Dhisasya Logo">
+    <h1 id="title">Dhisasya - Intelligent Crop System</h1>
+    <button id="langToggle" class="btn-green">ಕನ್ನಡ / English</button>
   </header>
 
-  <!-- Sensor Data -->
-  <section class="card">
-    <h2>Live Sensor Data (Dummy)</h2>
-    <p><strong>Temperature:</strong> <span id="temp">27.5</span> °C</p>
-    <p><strong>Humidity:</strong> <span id="humidity">40.3</span> %</p>
-    <p><strong>Soil Moisture:</strong> <span id="moisture">78.0</span> %</p>
-    <p><strong>pH Level:</strong> <span id="ph">5.9</span></p>
-  </section>
-
-  <!-- Controls -->
-  <section class="card">
-    <h2>Controls</h2>
-    <div class="buttons">
-      <button class="btn" onclick="turnOnPump()">Turn ON Irrigation</button>
-      <button class="btn danger" onclick="turnOffPump()">Turn OFF Irrigation</button>
+  <!-- Sensor Section -->
+  <section>
+    <h2 id="sensorHeading">Live Sensor Data</h2>
+    <div class="data-card">
+      <p id="temp">Temp: --</p>
+      <p id="humidity">Humidity: --</p>
+      <p id="moisture">Soil Moisture: --</p>
+      <p id="ph">pH: --</p>
     </div>
   </section>
 
-  <!-- Yield Estimation -->
-  <section class="card">
-    <h2>📈 Yield Estimation</h2>
-    <canvas id="yieldChart"></canvas>
+  <!-- Crop & Fertilizer -->
+  <section>
+    <h2 id="recommendHeading">Recommendations</h2>
+    <p id="recCrop">Recommended Crop: --</p>
+    <p id="recFert">Fertilizer: --</p>
   </section>
 
-  <!-- Market Prices -->
-  <section class="card">
-    <h2>💰 Market Prices</h2>
-    <canvas id="marketChart"></canvas>
+  <!-- Irrigation Control -->
+  <section>
+    <h2 id="irrigationHeading">Irrigation Control</h2>
+    <button id="turnOn" class="btn-green">Turn ON Pump</button>
+    <button id="turnOff" class="btn-red">Turn OFF Pump</button>
+    <p id="pumpState">Pump Status: OFF ❌</p>
+  </section>
+
+  <!-- Yield Graph -->
+  <section>
+    <h2 id="yieldHeading">Expected Yield</h2>
+    <canvas id="yieldChart"></canvas>
   </section>
 
   <script src="script.js"></script>
