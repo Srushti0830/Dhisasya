@@ -1,30 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dhisasya Dashboard</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Chart.js for graphs -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script defer src="script.js"></script>
 </head>
 <body>
   <header>
-    <img src="logo.png" alt="Dhisasya Logo" class="logo">
+    <img src="logo.png" alt="Dhisasya Logo" class="logo" />
     <h1>Farmer Dashboard</h1>
   </header>
 
   <main>
-    <h2>Live Sensor Data (Dummy)</h2>
-    <div class="card">
-      <p><strong>Temperature:</strong> <span id="temp">--</span> °C</p>
-      <p><strong>Humidity:</strong> <span id="humidity">--</span> %</p>
-      <p><strong>Soil Moisture:</strong> <span id="moisture">--</span> %</p>
-      <p><strong>pH Level:</strong> <span id="ph">--</span></p>
-    </div>
+    <!-- SENSOR DATA -->
+    <section class="card">
+      <h2>Live Sensor Data (Demo)</h2>
+      <div class="grid-2">
+        <div>
+          <p><strong>Temperature:</strong> <span id="temp">--</span> °C</p>
+          <p><strong>Humidity:</strong> <span id="humidity">--</span> %</p>
+        </div>
+        <div>
+          <p><strong>Soil Moisture:</strong> <span id="moisture">--</span> %</p>
+          <p><strong>Soil pH:</strong> <span id="ph">--</span></p>
+        </div>
+      </div>
+      <div class="actions">
+        <button id="simulateOnceBtn">Simulate Once</button>
+        <button id="toggleSimBtn">Start Auto-Sim</button>
+      </div>
+    </section>
 
-    <h2>Controls</h2>
-    <button onclick="alert('Irrigation Pump Turned ON')">Turn ON Irrigation</button>
-    <button onclick="alert('Irrigation Pump Turned OFF')">Turn OFF Irrigation</button>
+    <!-- RECOMMENDATIONS -->
+    <section class="card">
+      <h2>Recommendations</h2>
+      <div class="grid-2">
+        <div>
+          <p>🌱 <strong>Recommended Crop:</strong> <span id="recCrop">—</span></p>
+          <p>🧪 <strong>Fertilizer:</strong> <span id="recFert">—</span></p>
+        </div>
+        <div>
+          <p>ℹ️ <small>Based on temperature, humidity, soil moisture &amp; pH.</small></p>
+          <button id="recalcBtn">Recalculate</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- WATER FLOW CONTROL -->
+    <section class="card">
+      <h2>Water Flow Control (Demo)</h2>
+      <div class="grid-2">
+        <div>
+          <p><strong>Mode:</strong> <span id="modeLabel">Manual</span></p>
+          <p><strong>Pump:</strong> <span id="pumpState">OFF</span></p>
+          <p><strong>Flow (L/h):</strong> <span id="flowRate">0</span></p>
+        </div>
+        <div>
+          <div class="stack">
+            <label for="flowInput">Manual Flow (0–100 L/h)</label>
+            <input id="flowInput" type="number" min="0" max="100" value="0" />
+            <div class="actions">
+              <button id="setFlowBtn">Set Flow</button>
+              <button id="pumpOnBtn">Turn ON</button>
+              <button id="pumpOffBtn">Turn OFF</button>
+            </div>
+          </div>
+          <div class="stack">
+            <label><input id="autoModeChk" type="checkbox" /> Automatic Mode (based on soil moisture)</label>
+            <small>Auto rule: turn ON if moisture &lt; 35%, turn OFF if &gt; 55%.</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GRAPHS -->
+    <section class="card">
+      <h2>Yield Prediction</h2>
+      <canvas id="yieldChart" height="120"></canvas>
+    </section>
+
+    <section class="card">
+      <h2>Market Prices (₹/kg)</h2>
+      <canvas id="marketChart" height="120"></canvas>
+    </section>
   </main>
 
   <footer>
