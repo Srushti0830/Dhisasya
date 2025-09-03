@@ -1,184 +1,179 @@
-/* ===== UI Elements ===== */
-const ui = {
-  title: document.getElementById("title"),
-  sensorHeading: document.getElementById("sensorHeading"),
-  recommendHeading: document.getElementById("recommendHeading"),
-  irrigationHeading: document.getElementById("irrigationHeading"),
-  yieldHeading: document.getElementById("yieldHeading"),
-  marketHeading: document.getElementById("marketHeading"),
-  temp: document.getElementById("temp"),
-  humidity: document.getElementById("humidity"),
-  moisture: document.getElementById("moisture"),
-  ph: document.getElementById("ph"),
-  npk: document.getElementById("npk"),
-  recCrop: document.getElementById("recCrop"),
-  recFert: document.getElementById("recFert"),
-  pumpState: document.getElementById("pumpState"),
-  turnOn: document.getElementById("turnOn"),
-  turnOff: document.getElementById("turnOff"),
-  marketBody: document.getElementById("marketBody"),
-  langToggle: document.getElementById("langToggle"),
-  yieldChart: document.getElementById("yieldChart")
-};
-
-/* ===== Language Translations ===== */
+/* =============================
+   Global Language Switching
+============================= */
 let currentLang = "en";
 
 const translations = {
   en: {
     title: "Dhisasya - Intelligent Crop System",
-    sensorHeading: "Live Sensor Data",
-    recommendHeading: "Recommendations",
-    irrigationHeading: "Irrigation Control",
-    yieldHeading: "Expected Yield",
+    cropHeading: "Crop Recommendation",
+    fertHeading: "Fertilizer Recommendation",
+    yieldHeading: "Yield Prediction Graph",
     marketHeading: "Market Prices",
-    temp: "Temp",
-    humidity: "Humidity",
-    moisture: "Soil Moisture",
-    ph: "Soil pH",
-    npk: "NPK",
-    cropRice: "Recommended Crop: Rice 🌾",
-    cropTomato: "Recommended Crop: Tomato 🍅",
-    cropMaize: "Recommended Crop: Maize 🌽",
-    fertHighN: "Fertilizer: Urea (High N)",
-    fertBalanced: "Fertilizer: NPK 10-10-10",
-    fertHighK: "Fertilizer: Potash + NPK",
-    pumpOn: "Pump Status: ON ✅",
-    pumpOff: "Pump Status: OFF ❌",
-    btnOn: "Turn ON Pump",
-    btnOff: "Turn OFF Pump"
+    waterHeading: "Water Flow Control",
+    diseaseHeading: "Disease Recognition",
+    checkCrop: "Check Crop",
+    recommendFert: "Recommend Fertilizer",
+    pumpOn: "Turn ON Pump",
+    pumpOff: "Turn OFF Pump"
   },
   kn: {
     title: "ಧಿಸಸ್ಯ - ಬುದ್ಧಿವಂತ ಬೆಳೆ ವ್ಯವಸ್ಥೆ",
-    sensorHeading: "ನೇರ ಸಂವೇದಕ ಡೇಟಾ",
-    recommendHeading: "ಶಿಫಾರಸುಗಳು",
-    irrigationHeading: "ನೀರಾವರಿ ನಿಯಂತ್ರಣ",
-    yieldHeading: "ಅಪೇಕ್ಷಿತ ಉತ್ಪಾದನೆ",
+    cropHeading: "ಬೆಳೆ ಶಿಫಾರಸು",
+    fertHeading: "ರಸಗೊಬ್ಬರ ಶಿಫಾರಸು",
+    yieldHeading: "ಉತ್ಪಾದನಾ ಪೂರ್ವಾನುಮಾನ ಚಾರ್ಟ್",
     marketHeading: "ಮಾರುಕಟ್ಟೆ ಬೆಲೆಗಳು",
-    temp: "ತಾಪಮಾನ",
-    humidity: "ಆದ್ರತೆ",
-    moisture: "ಮಣ್ಣಿನ ತೇವಾಂಶ",
-    ph: "ಮಣ್ಣಿನ pH",
-    npk: "NPK",
-    cropRice: "ಶಿಫಾರಸು ಮಾಡಿದ ಬೆಳೆ: ಅಕ್ಕಿ 🌾",
-    cropTomato: "ಶಿಫಾರಸು ಮಾಡಿದ ಬೆಳೆ: ಟೊಮ್ಯಾಟೊ 🍅",
-    cropMaize: "ಶಿಫಾರಸು ಮಾಡಿದ ಬೆಳೆ: ಜೋಳ 🌽",
-    fertHighN: "ಗೊಬ್ಬರ: ಯೂರಿಯಾ (ಹೆಚ್ಚು N)",
-    fertBalanced: "ಗೊಬ್ಬರ: NPK 10-10-10",
-    fertHighK: "ಗೊಬ್ಬರ: ಪೊಟಾಶ್ + NPK",
-    pumpOn: "ಪಂಪ್ ಸ್ಥಿತಿ: ON ✅",
-    pumpOff: "ಪಂಪ್ ಸ್ಥಿತಿ: OFF ❌",
-    btnOn: "ಪಂಪ್ ಆನ್ ಮಾಡಿ",
-    btnOff: "ಪಂಪ್ ಆಫ್ ಮಾಡಿ"
+    waterHeading: "ನೀರಿನ ಹರಿವು ನಿಯಂತ್ರಣ",
+    diseaseHeading: "ರೋಗ ಗುರುತಿಸುವಿಕೆ",
+    checkCrop: "ಬೆಳೆ ಪರಿಶೀಲಿಸಿ",
+    recommendFert: "ರಸಗೊಬ್ಬರ ಶಿಫಾರಸು",
+    pumpOn: "ಪಂಪ್ ಆನ್ ಮಾಡಿ",
+    pumpOff: "ಪಂಪ್ ಆಫ್ ಮಾಡಿ"
   }
 };
 
-/* ===== Language Switch ===== */
+const ui = {
+  title: document.getElementById("title"),
+  cropHeading: document.getElementById("cropHeading"),
+  fertHeading: document.getElementById("fertHeading"),
+  yieldHeading: document.getElementById("yieldHeading"),
+  marketHeading: document.getElementById("marketHeading"),
+  waterHeading: document.getElementById("waterHeading"),
+  diseaseHeading: document.getElementById("diseaseHeading"),
+  checkCrop: document.getElementById("checkCrop"),
+  recommendFert: document.getElementById("recommendFert"),
+  pumpOn: document.getElementById("pumpOn"),
+  pumpOff: document.getElementById("pumpOff")
+};
+
 function setLanguage(lang) {
   currentLang = lang;
-  const t = translations[lang];
-  ui.title.textContent = t.title;
-  ui.sensorHeading.textContent = t.sensorHeading;
-  ui.recommendHeading.textContent = t.recommendHeading;
-  ui.irrigationHeading.textContent = t.irrigationHeading;
-  ui.yieldHeading.textContent = t.yieldHeading;
-  ui.marketHeading.textContent = t.marketHeading;
-  ui.turnOn.textContent = t.btnOn;
-  ui.turnOff.textContent = t.btnOff;
+  ui.title.textContent = translations[lang].title;
+  ui.cropHeading.textContent = translations[lang].cropHeading;
+  ui.fertHeading.textContent = translations[lang].fertHeading;
+  ui.yieldHeading.textContent = translations[lang].yieldHeading;
+  ui.marketHeading.textContent = translations[lang].marketHeading;
+  ui.waterHeading.textContent = translations[lang].waterHeading;
+  ui.diseaseHeading.textContent = translations[lang].diseaseHeading;
+  ui.checkCrop.textContent = translations[lang].checkCrop;
+  ui.recommendFert.textContent = translations[lang].recommendFert;
+  ui.pumpOn.textContent = translations[lang].pumpOn;
+  ui.pumpOff.textContent = translations[lang].pumpOff;
 }
 
-/* ===== Dummy Sensor Data ===== */
-function getSensorData() {
-  return {
-    temp: (20 + Math.random() * 10).toFixed(1),
-    humidity: (40 + Math.random() * 20).toFixed(1),
-    moisture: (30 + Math.random() * 50).toFixed(1),
-    ph: (5 + Math.random() * 2).toFixed(2),
-    npk: {
-      n: Math.floor(Math.random() * 100),
-      p: Math.floor(Math.random() * 100),
-      k: Math.floor(Math.random() * 100)
-    }
-  };
-}
+/* =============================
+   Crop Recommendation
+============================= */
+document.getElementById("checkCrop").addEventListener("click", function () {
+  const n = document.getElementById("n").value;
+  const p = document.getElementById("p").value;
+  const k = document.getElementById("k").value;
 
-/* ===== Crop & Fertilizer Recommendation ===== */
-function recommend(data) {
-  const t = translations[currentLang];
-  if (data.moisture > 60 && data.ph < 6.5 && data.npk.n > 50) {
-    ui.recCrop.textContent = t.cropRice;
-    ui.recFert.textContent = t.fertHighN;
-  } else if (data.ph > 6.5 && data.moisture > 40) {
-    ui.recCrop.textContent = t.cropTomato;
-    ui.recFert.textContent = t.fertBalanced;
-  } else {
-    ui.recCrop.textContent = t.cropMaize;
-    ui.recFert.textContent = t.fertHighK;
+  let crop;
+  if (n > 80 && p > 40) crop = currentLang === "en" ? "Maize 🌽" : "ಮೆಕ್ಕೆಜೋಳ 🌽";
+  else if (n > 60 && k > 40) crop = currentLang === "en" ? "Rice 🌾" : "ಅಕ್ಕಿ 🌾";
+  else crop = currentLang === "en" ? "Wheat 🌿" : "ಗೋಧಿ 🌿";
+
+  document.getElementById("cropResult").textContent =
+    (currentLang === "en" ? "Recommended Crop: " : "ಶಿಫಾರಸು ಮಾಡಿದ ಬೆಳೆ: ") + crop;
+});
+
+/* =============================
+   Fertilizer Recommendation
+============================= */
+document.getElementById("recommendFert").addEventListener("click", function () {
+  const n = document.getElementById("n").value;
+  const p = document.getElementById("p").value;
+  const k = document.getElementById("k").value;
+
+  let fert;
+  if (n < 50) fert = currentLang === "en" ? "Add Urea (Nitrogen)" : "ಯೂರಿಯಾ ಸೇರಿಸಿ (ನೈಟ್ರೋಜನ್)";
+  else if (p < 30) fert = currentLang === "en" ? "Add DAP (Phosphorus)" : "ಡಿಎಪಿ ಸೇರಿಸಿ (ಫಾಸ್ಫರಸ್)";
+  else if (k < 30) fert = currentLang === "en" ? "Add MOP (Potassium)" : "ಎಂಪಿಒಪಿ ಸೇರಿಸಿ (ಪೊಟ್ಯಾಸಿಯಂ)";
+  else fert = currentLang === "en" ? "Balanced fertilizer is sufficient" : "ಸಮತೋಲನ ರಸಗೊಬ್ಬರ ಸಾಕಷ್ಟು";
+
+  document.getElementById("fertResult").textContent = fert;
+});
+
+/* =============================
+   Yield Graph (Demo)
+============================= */
+const ctx = document.getElementById("yieldChart").getContext("2d");
+const yieldChart = new Chart(ctx, {
+  type: "line",
+  data: {
+    labels: ["2021", "2022", "2023", "2024"],
+    datasets: [{
+      label: "Yield (Quintals per Acre)",
+      data: [20, 25, 23, 30],
+      borderWidth: 2,
+      fill: false,
+      tension: 0.3
+    }]
   }
-}
-
-/* ===== Update Dashboard ===== */
-function updateDashboard() {
-  const data = getSensorData();
-  const t = translations[currentLang];
-
-  ui.temp.textContent = `${t.temp}: ${data.temp} °C`;
-  ui.humidity.textContent = `${t.humidity}: ${data.humidity} %`;
-  ui.moisture.textContent = `${t.moisture}: ${data.moisture} %`;
-  ui.ph.textContent = `${t.ph}: ${data.ph}`;
-  ui.npk.textContent = `${t.npk}: N=${data.npk.n}, P=${data.npk.p}, K=${data.npk.k}`;
-
-  recommend(data);
-}
-
-/* ===== Irrigation ===== */
-ui.turnOn.addEventListener("click", () => {
-  ui.pumpState.textContent = translations[currentLang].pumpOn;
-});
-ui.turnOff.addEventListener("click", () => {
-  ui.pumpState.textContent = translations[currentLang].pumpOff;
 });
 
-/* ===== Yield Chart ===== */
-function drawChart() {
-  new Chart(ui.yieldChart, {
-    type: "line",
-    data: {
-      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-      datasets: [{
-        label: "Yield (t/ha)",
-        data: [12, 15, 18, 20, 19, 22],
-        borderColor: "#2e7d32",
-        backgroundColor: "rgba(46, 125, 50, 0.2)",
-        fill: true,
-        tension: 0.3
-      }]
-    }
-  });
-}
+/* =============================
+   Market Prices (Demo)
+============================= */
+const marketData = [
+  { crop: "Rice", price: "₹2200/qtl" },
+  { crop: "Wheat", price: "₹2000/qtl" },
+  { crop: "Maize", price: "₹1800/qtl" }
+];
 
-/* ===== Market Prices ===== */
-function loadMarketPrices() {
-  const crops = [
-    { name: "Rice 🌾", price: 3200 },
-    { name: "Tomato 🍅", price: 2500 },
-    { name: "Maize 🌽", price: 2200 }
-  ];
-  ui.marketBody.innerHTML = "";
-  crops.forEach(crop => {
-    const row = `<tr><td>${crop.name}</td><td>${crop.price}</td></tr>`;
-    ui.marketBody.innerHTML += row;
-  });
-}
-
-/* ===== Init ===== */
-ui.langToggle.addEventListener("click", () => {
-  setLanguage(currentLang === "en" ? "kn" : "en");
-  updateDashboard();
+const tableBody = document.getElementById("marketTable");
+marketData.forEach(item => {
+  const row = `<tr><td>${item.crop}</td><td>${item.price}</td></tr>`;
+  tableBody.innerHTML += row;
 });
 
-setLanguage("en");
-setInterval(updateDashboard, 4000);
-updateDashboard();
-drawChart();
-loadMarketPrices();
+/* =============================
+   Water Flow Control
+============================= */
+document.getElementById("pumpOn").addEventListener("click", () => {
+  alert(currentLang === "en" ? "Pump is turned ON 🚰" : "ಪಂಪ್ ಆನ್ ಆಗಿದೆ 🚰");
+});
+
+document.getElementById("pumpOff").addEventListener("click", () => {
+  alert(currentLang === "en" ? "Pump is turned OFF 💧" : "ಪಂಪ್ ಆಫ್ ಆಗಿದೆ 💧");
+});
+
+/* =============================
+   Disease Recognition (Demo)
+============================= */
+const diseaseDb = {
+  en: {
+    healthy: { name: "Healthy Leaf ✅", treatment: "No action needed" },
+    blight: { name: "Early Blight 🍂", treatment: "Use Mancozeb fungicide spray" },
+    mildew: { name: "Powdery Mildew 🌫️", treatment: "Apply sulfur spray" },
+    rust: { name: "Leaf Rust 🍁", treatment: "Spray triazole fungicide" }
+  },
+  kn: {
+    healthy: { name: "ಆರೋಗ್ಯಕರ ಎಲೆ ✅", treatment: "ಯಾವ ಕ್ರಮವೂ ಅಗತ್ಯವಿಲ್ಲ" },
+    blight: { name: "ಆರ್ಲಿ ಬ್ಲೈಟ್ 🍂", treatment: "ಮ್ಯಾಂಕೋಜೆಬ್ ಫಂಗಿಸೈಡ್ ಸ್ಪ್ರೇ ಬಳಸಿ" },
+    mildew: { name: "ಪೌಡರಿ ಮಿಲ್ಡ್ಯೂ 🌫️", treatment: "ಸಲ್ಫರ್ ಸ್ಪ್ರೇ ಬಳಸಿ" },
+    rust: { name: "ಲೀಫ್ ರಸ್ಟ್ 🍁", treatment: "ಟ್ರೈಝೋಲ್ ಫಂಗಿಸೈಡ್ ಬಳಸಿ" }
+  }
+};
+
+document.getElementById("leafUpload").addEventListener("change", function (e) {
+  const file = e.target.files[0];
+  if (!file) return;
+
+  // Show preview
+  const reader = new FileReader();
+  reader.onload = function (event) {
+    document.getElementById("preview").innerHTML =
+      `<img src="${event.target.result}" alt="Leaf" width="200" style="margin:10px;">`;
+  };
+  reader.readAsDataURL(file);
+
+  // Fake recognition (random)
+  const diseases = ["healthy", "blight", "mildew", "rust"];
+  const detected = diseases[Math.floor(Math.random() * diseases.length)];
+
+  const t = diseaseDb[currentLang][detected];
+  document.getElementById("diseaseResult").textContent =
+    `${t.name} → ${t.treatment}`;
+});
