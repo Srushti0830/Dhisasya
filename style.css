@@ -1,31 +1,120 @@
-/* existing styles ... */
-
-.grid-2 {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 12px;
+/* =====================
+   General Styles
+===================== */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f6fff6;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  text-align: center;
 }
 
-.stack {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+/* =====================
+   Header
+===================== */
+header {
+  background-color: #2e7d32;
+  color: white;
+  padding: 20px;
 }
 
-.actions {
+header .logo {
+  height: 50px;
+  display: block;
+  margin: 0 auto 10px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+/* =====================
+   Card Layout
+===================== */
+.card {
+  background: white;
+  margin: 20px auto;
+  padding: 20px;
+  width: 90%;
+  max-width: 600px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.card h2 {
+  text-align: center;
+  color: #2e7d32;
+  margin-bottom: 15px;
+}
+
+/* =====================
+   Sensor Data Formatting
+===================== */
+.card p {
+  font-size: 1rem;
+  margin: 8px 0;
+}
+
+.card strong {
+  color: #1b5e20;
+}
+
+/* =====================
+   Buttons
+===================== */
+.buttons {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
   justify-content: center;
+  gap: 20px;
+  margin-top: 10px;
 }
 
-input[type="number"] {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+.btn {
+  background: #2e7d32;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background 0.3s;
 }
 
-/* Optional: make cards a bit wider on large screens */
-@media (min-width: 900px) {
-  .card { width: 800px; }
+.btn:hover {
+  background: #1b5e20;
+}
+
+.btn.danger {
+  background: #d32f2f;
+}
+
+.btn.danger:hover {
+  background: #b71c1c;
+}
+
+/* =====================
+   Charts
+===================== */
+canvas {
+  margin-top: 15px;
+  max-width: 100%;
+}
+
+/* =====================
+   Mobile Responsive
+===================== */
+@media (max-width: 600px) {
+  .card {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+    padding: 10px 15px;
+  }
 }
