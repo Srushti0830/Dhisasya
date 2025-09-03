@@ -1,72 +1,73 @@
-// ===============================
-// Irrigation Pump Controls
-// ===============================
-function turnOnPump() {
-  alert("✅ Irrigation pump turned ON 🌱💧");
-  document.getElementById("pump-status").innerText = "Pump: ON";
+/* ====== UI Elements ====== */
+const ui = {
+  temp: document.getElementById("temp"),
+  humidity: document.getElementById("humidity"),
+  moisture: document.getElementById("moisture"),
+  ph: document.getElementById("ph"),
+  recCrop: document.getElementById("recCrop"),
+  recFert: document.getElementById("recFert"),
+  pumpState: document.getElementById("pumpState"),
+  yieldChart: document.getElementById("yieldChart"),
+  turnOn: document.getElementById("turnOn"),
+  turnOff: document.getElementById("turnOff")
+};
+
+/* ====== Generate Dummy Sensor Data ====== */
+function getSensorData() {
+  return {
+    temp: (20 + Math.random() * 10).toFixed(1),
+    humidity: (40 + Math.random() * 20).toFixed(1),
+    moisture: (30 + Math.random() * 50).toFixed(1),
+    ph: (5 + Math.random() * 2).toFixed(2)
+  };
 }
 
-function turnOffPump() {
-  alert("❌ Irrigation pump turned OFF");
-  document.getElementById("pump-status").innerText = "Pump: OFF";
+/* ====== Update Dashboard ====== */
+function updateDashboard() {
+  const data = getSensorData();
+  ui.temp.textContent = `${data.temp} °C`;
+  ui.humidity.textContent = `${data.humidity} %`;
+  ui.moisture.textContent = `${data.moisture} %`;
+  ui.ph.textContent = data.ph;
+
+  // Simple crop recommendation logic
+  if (data.moisture > 50 && data.ph > 6) {
+    ui.recCrop.textContent = "Recommended Crop: Tomato 🍅";
+    ui.recFert.textContent = "Fertilizer: NPK 10-10-10 + Micronutrients";
+  } else {
+    ui.recCrop.textContent = "Recommended Crop: Maize 🌽";
+    ui.recFert.textContent = "Fertilizer: Urea + Potash";
+  }
 }
 
-// ===============================
-// Yield Estimation Chart
-// ===============================
-const yieldCtx = document.getElementById("yieldChart");
-new Chart(yieldCtx, {
-  type: "line",
-  data: {
-    labels: ["Week 1", "Week 2", "Week 3", "Week 4"],
-    datasets: [{
-      label: "Estimated Yield (kg)",
-      data: [10, 20, 35, 50],
-      borderColor: "#2e7d32",
-      borderWidth: 2,
-      fill: true,
-      backgroundColor: "rgba(46,125,50,0.2)",
-      tension: 0.3
-    }]
-  },
-  options: {
-    responsive: true,
-    plugins: {
-      legend: {
-        display: true,
-        labels: { color: "#2e7d32" }
-      }
-    }
-  }
+/* ====== Irrigation Controls ====== */
+ui.turnOn.addEventListener("click", () => {
+  ui.pumpState.textContent = "Pump Status: ON ✅";
 });
 
-// ===============================
-// Market Prices Chart
-// ===============================
-const marketCtx = document.getElementById("marketChart");
-new Chart(marketCtx, {
-  type: "bar",
-  data: {
-    labels: ["Tomato", "Onion", "Wheat", "Rice"],
-    datasets: [{
-      label: "Market Price (₹/kg)",
-      data: [30, 25, 22, 18],
-      backgroundColor: ["#66bb6a","#43a047","#2e7d32","#1b5e20"]
-    }]
-  },
-  options: {
-    responsive: true,
-    plugins: {
-      legend: { display: false }
-    },
-    scales: {
-      y: {
-        beginAtZero: true,
-        ticks: { color: "#2e7d32" }
-      },
-      x: {
-        ticks: { color: "#2e7d32" }
-      }
-    }
-  }
+ui.turnOff.addEventListener("click", () => {
+  ui.pumpState.textContent = "Pump Status: OFF ❌";
 });
+
+/* ====== Yield Chart ====== */
+function drawChart() {
+  new Chart(ui.yieldChart, {
+    type: "line",
+    data: {
+      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+      datasets: [{
+        label: "Expected Yield (t/ha)",
+        data: [10, 14, 18, 20, 17, 22],
+        borderColor: "#2e7d32",
+        backgroundColor: "rgba(46, 125, 50, 0.2)",
+        fill: true,
+        tension: 0.3
+      }]
+    }
+  });
+}
+
+/* ====== Init ====== */
+setInterval(updateDashboard, 4000); // Auto-refresh every 4s
+updateDashboard();
+drawChart();
