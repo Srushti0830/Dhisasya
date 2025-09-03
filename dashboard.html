@@ -7,10 +7,9 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-
   <!-- Header -->
   <header>
-    <img src="images/logo.jpeg" alt="Dhisasya Logo">
+    <img src="images/logo.jpeg" alt="Dhisasya Logo" class="logo">
     <h1 id="title">Dhisasya - Intelligent Crop System</h1>
     <button id="langToggle" class="btn-green">ಕನ್ನಡ / English</button>
   </header>
@@ -22,18 +21,19 @@
       <p id="temp">Temp: --</p>
       <p id="humidity">Humidity: --</p>
       <p id="moisture">Soil Moisture: --</p>
-      <p id="ph">pH: --</p>
+      <p id="ph">Soil pH: --</p>
+      <p id="npk">NPK (kg/ha): --</p>
     </div>
   </section>
 
-  <!-- Crop & Fertilizer -->
+  <!-- Recommendations -->
   <section>
     <h2 id="recommendHeading">Recommendations</h2>
     <p id="recCrop">Recommended Crop: --</p>
     <p id="recFert">Fertilizer: --</p>
   </section>
 
-  <!-- Irrigation Control -->
+  <!-- Irrigation -->
   <section>
     <h2 id="irrigationHeading">Irrigation Control</h2>
     <button id="turnOn" class="btn-green">Turn ON Pump</button>
@@ -41,10 +41,24 @@
     <p id="pumpState">Pump Status: OFF ❌</p>
   </section>
 
-  <!-- Yield Graph -->
+  <!-- Yield -->
   <section>
     <h2 id="yieldHeading">Expected Yield</h2>
     <canvas id="yieldChart"></canvas>
+  </section>
+
+  <!-- Market Prices -->
+  <section>
+    <h2 id="marketHeading">Market Prices</h2>
+    <table id="marketTable" border="1" cellpadding="5">
+      <thead>
+        <tr>
+          <th>Crop</th>
+          <th>Price (₹/quintal)</th>
+        </tr>
+      </thead>
+      <tbody id="marketBody"></tbody>
+    </table>
   </section>
 
   <script src="script.js"></script>
