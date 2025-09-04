@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Settings - Dhisasya</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <img src="assets/logo.jpeg" alt="Dhisasya Logo" class="logo">
+    <h1>Settings</h1>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Language</h2>
+      <button onclick="switchLanguage('en')">English</button>
+      <button onclick="switchLanguage('kn')">ಕನ್ನಡ</button>
+    </section>
+
+    <section class="card">
+      <h2>Preferences</h2>
+      <label><input type="checkbox" checked> Enable Notifications</label><br>
+      <label><input type="checkbox"> Dark Mode</label>
+    </section>
+  </main>
+
+  <footer class="navbar">
+    <a href="index.html">🏠 Home</a>
+    <a href="dashboard.html">📊 Dashboard</a>
+    <a href="settings.html" class="active">⚙️ Settings</a>
+    <a href="profile.html">👤 Profile</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
