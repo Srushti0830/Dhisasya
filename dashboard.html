@@ -2,72 +2,76 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Dhisasya - Intelligent Crop System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dhisasya - Dashboard</title>
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <img src="images/logo.jpeg" alt="Dhisasya Logo" class="logo">
+  <header class="app-header">
+    <img src="assets/logo.jpeg" alt="Logo" class="logo">
     <h1 id="title">Dhisasya - Intelligent Crop System</h1>
-    <button id="langToggle" class="btn-green">ಕನ್ನಡ / English</button>
+    <div class="lang-toggle">
+      <button onclick="setLanguage('en')">English</button>
+      <button onclick="setLanguage('kn')">ಕನ್ನಡ</button>
+    </div>
   </header>
 
-  <!-- Sensor Section -->
-  <section>
-    <h2 id="sensorHeading">Live Sensor Data</h2>
-    <div class="data-card">
-      <p id="temp">Temp: --</p>
-      <p id="humidity">Humidity: --</p>
-      <p id="moisture">Soil Moisture: --</p>
-      <p id="ph">Soil pH: --</p>
-      <p id="npk">NPK (kg/ha): --</p>
-    </div>
-  </section>
+  <main>
+    <!-- Crop Recommendation -->
+    <section>
+      <h2 id="cropHeading">Crop Recommendation</h2>
+      <label>N: <input type="number" id="n"></label>
+      <label>P: <input type="number" id="p"></label>
+      <label>K: <input type="number" id="k"></label>
+      <button id="checkCrop">Check Crop</button>
+      <p id="cropResult"></p>
+    </section>
 
-  <!-- Recommendations -->
-  <section>
-    <h2 id="recommendHeading">Recommendations</h2>
-    <p id="recCrop">Recommended Crop: --</p>
-    <p id="recFert">Fertilizer: --</p>
-  </section>
+    <!-- Fertilizer Recommendation -->
+    <section>
+      <h2 id="fertHeading">Fertilizer Recommendation</h2>
+      <button id="recommendFert">Recommend Fertilizer</button>
+      <p id="fertResult"></p>
+    </section>
 
-  <!-- Irrigation -->
-  <section>
-    <h2 id="irrigationHeading">Irrigation Control</h2>
-    <button id="turnOn" class="btn-green">Turn ON Pump</button>
-    <button id="turnOff" class="btn-red">Turn OFF Pump</button>
-    <p id="pumpState">Pump Status: OFF ❌</p>
-  </section>
+    <!-- Yield Graph -->
+    <section>
+      <h2 id="yieldHeading">Yield Prediction Graph</h2>
+      <canvas id="yieldChart" width="300" height="150"></canvas>
+    </section>
 
-  <!-- Yield -->
-  <section>
-    <h2 id="yieldHeading">Expected Yield</h2>
-    <canvas id="yieldChart"></canvas>
-  </section>
+    <!-- Market Prices -->
+    <section>
+      <h2 id="marketHeading">Market Prices</h2>
+      <table border="1">
+        <thead><tr><th>Crop</th><th>Price</th></tr></thead>
+        <tbody id="marketTable"></tbody>
+      </table>
+    </section>
 
-  <!-- Market Prices -->
-  <section>
-    <h2 id="marketHeading">Market Prices</h2>
-    <table id="marketTable" border="1" cellpadding="5">
-      <thead>
-        <tr>
-          <th>Crop</th>
-          <th>Price (₹/quintal)</th>
-        </tr>
-      </thead>
-      <tbody id="marketBody"></tbody>
-    </table>
-  </section>
+    <!-- Water Control -->
+    <section>
+      <h2 id="waterHeading">Water Flow Control</h2>
+      <button id="pumpOn">Turn ON Pump</button>
+      <button id="pumpOff">Turn OFF Pump</button>
+    </section>
+
     <!-- Disease Recognition -->
-  <section>
-    <h2 id="diseaseHeading">Disease Recognition</h2>
-    <input type="file" id="leafUpload" accept="image/*">
-    <div id="preview"></div>
-    <p id="diseaseResult">Upload a leaf image to check.</p>
-  </section>
+    <section>
+      <h2 id="diseaseHeading">Disease Recognition</h2>
+      <input type="file" id="leafUpload" accept="image/*">
+      <div id="preview"></div>
+      <p id="diseaseResult"></p>
+    </section>
+  </main>
 
+  <footer class="bottom-nav">
+    <a href="index.html">🏠 Home</a>
+    <a href="dashboard.html">📊 Dashboard</a>
+    <a href="#">⚙️ Settings</a>
+    <a href="#">👤 Profile</a>
+  </footer>
 
   <script src="script.js"></script>
 </body>
