@@ -3,23 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dhisasya - Intelligent Crop System</title>
+  <title>Dhisasya - Connect</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <img src="logo.png" alt="Dhisasya Logo" class="logo">
+  <header class="app-header">
+    <img src="assets/logo.jpeg" alt="Logo" class="logo">
     <h1>Dhisasya - Intelligent Crop System</h1>
   </header>
 
-  <main>
-    <h2>Welcome Farmer 👨‍🌾</h2>
-    <p>This is a demo version of Dhisasya website running with dummy data.</p>
-    <a href="dashboard.html" class="btn">Go to Dashboard</a>
+  <main class="connect-screen">
+    <h2>Select Connection Mode</h2>
+    <button onclick="connectBluetooth()">🔗 Connect via Bluetooth</button>
+    <button onclick="connectGSM()">📶 Connect via GSM</button>
   </main>
 
-  <footer>
-    <p>© 2025 Dhisasya Project Team</p>
+  <footer class="bottom-nav">
+    <a href="index.html">🏠 Home</a>
+    <a href="dashboard.html">📊 Dashboard</a>
+    <a href="#">⚙️ Settings</a>
+    <a href="#">👤 Profile</a>
   </footer>
+
+  <script>
+    function connectBluetooth(){
+      alert("Bluetooth connected (Demo HC-05). Redirecting...");
+      window.location.href = "dashboard.html";
+    }
+    function connectGSM(){
+      alert("GSM connected (Demo SIM800L). Redirecting...");
+      window.location.href = "dashboard.html";
+    }
+  </script>
 </body>
 </html>
