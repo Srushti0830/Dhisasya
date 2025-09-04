@@ -1,104 +1,78 @@
-/* ===== Reset & Base ===== */
-* {
+body {
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  background: #f8f9fa;
 }
 
-body {
-  background-color: #f5faf5;
-  color: #222;
-  line-height: 1.6;
-}
-
-/* ===== Header ===== */
-header {
-  background: #2e7d32;
+.app-header {
+  background: #2c7a7b;
   color: white;
-  padding: 20px;
-  text-align: center;
-  border-bottom: 4px solid #1b5e20;
+  padding: 15px;
 }
 
-header img {
-  width: 70px;
-  height: auto;
-  display: block;
-  margin: 0 auto 10px;
+.logo {
+  height: 60px;
+  vertical-align: middle;
 }
 
-header h1 {
-  font-size: 28px;
-  font-weight: bold;
-}
-
-/* ===== Sections ===== */
-section {
-  max-width: 900px;
-  margin: 30px auto;
-  background: white;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-h2 {
-  text-align: center;
-  color: #1b5e20;
-  margin-bottom: 15px;
-}
-
-/* ===== Sensor Data Card ===== */
-.data-card {
-  text-align: center;
-  padding: 20px;
-  background: #f0fff0;
-  border-radius: 10px;
-  margin-bottom: 20px;
-}
-
-.data-card p {
-  font-size: 18px;
-  font-weight: bold;
-  margin: 8px 0;
-}
-
-/* ===== Buttons ===== */
-button {
-  padding: 10px 20px;
-  margin: 10px;
+.lang-toggle button {
+  margin: 5px;
+  padding: 6px 12px;
   border: none;
+  background: white;
+  color: #2c7a7b;
   border-radius: 6px;
   cursor: pointer;
-  font-size: 15px;
-  font-weight: bold;
-  transition: background 0.3s ease;
 }
 
-.btn-green {
-  background: #2e7d32;
+section {
+  margin: 20px;
+  padding: 15px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+}
+
+button {
+  margin-top: 10px;
+  padding: 8px 15px;
+  border: none;
+  background: #2c7a7b;
   color: white;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
-.btn-green:hover {
-  background: #1b5e20;
+button:hover {
+  background: #225e5e;
 }
 
-.btn-red {
-  background: #c62828;
-  color: white;
+/* Connect screen */
+.connect-screen {
+  margin-top: 100px;
 }
 
-.btn-red:hover {
-  background: #8e0000;
-}
-
-/* ===== Chart Section ===== */
-canvas {
-  width: 100% !important;
-  max-width: 800px;
-  height: 300px !important;
-  margin: 20px auto;
+.connect-screen button {
   display: block;
+  margin: 15px auto;
+  width: 60%;
+}
+
+/* Bottom navigation */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #2c7a7b;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+}
+
+.bottom-nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
 }
